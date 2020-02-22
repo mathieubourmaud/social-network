@@ -1,48 +1,17 @@
-import React, { useState } from 'react';
-import {
-  Row,
-  Container,
-  Col,
-  Alert,
-} from 'react-bootstrap';
-import PostForm from './pages/Posts/PostForm';
-import Posts from './pages/Posts/Posts';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PostPage from './pages/Posts/PostPage';
 
-const App = () => {
-  const [posts, setPosts] = useState([]);
-  const [message, setMessage] = useState();
-
-  const addPost = (post) => {
-    setPosts([...posts, post]);
-    setMessage({ type: 'success', text: 'The post has been created.' });
-  };
-
-  return (
-    <div className="App">
-      <Container>
-        { message
-          && (
-          <Row className="justify-content-md-center">
-            <Col md="8">
-              <Alert className="mt-4" variant={message.type}>{ message.text }</Alert>
-            </Col>
-          </Row>
-          )
-        }
-        <Row className="justify-content-md-center">
-          <Col md="8">
-            <PostForm addPost={addPost} />
-          </Col>
-        </Row>
-        <hr className="my-4" />
-        <Row className="justify-content-md-center">
-          <Col md="8">
-            <Posts posts={posts} />
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
-};
+const App = () => (
+  <div className="App">
+    <Router>
+      <Switch>
+        <Route path="/posts">
+          <PostPage />
+        </Route>
+      </Switch>
+    </Router>
+  </div>
+);
 
 export default App;
