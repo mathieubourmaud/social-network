@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Post from './Post';
+import PostCard from './PostCard';
 
 const Posts = ({ posts }) => (
   <div>
-    { posts.map(post => <Post post={post} key={post.id} />) }
+    { posts.map(post => <PostCard post={post} key={post.id} />) }
   </div>
 );
 
